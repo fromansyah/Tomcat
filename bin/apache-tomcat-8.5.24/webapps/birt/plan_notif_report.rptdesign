@@ -21,6 +21,22 @@
             <property name="odaURL">jdbc:mysql://localhost/pricing</property>
             <property name="odaUser">root</property>
         </oda-data-source>
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="prod_db" id="51">
+            <list-property name="privateDriverProperties">
+                <ex-property>
+                    <name>contentBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+                <ex-property>
+                    <name>metadataBidiFormatStr</name>
+                    <value>ILYNN</value>
+                </ex-property>
+            </list-property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
+            <property name="odaURL">jdbc:mysql://pricing-app-mysqldbserver.mysql.database.azure.com:3306/pricing</property>
+            <property name="odaUser">fromansyah@pricing-app-mysqldbserver</property>
+            <encrypted-property name="odaPassword" encryptionID="base64">UGFzc3cwcmQ=</encrypted-property>
+        </oda-data-source>
     </data-sources>
     <data-sets>
         <oda-data-set extensionID="org.eclipse.birt.report.data.oda.jdbc.JdbcSelectDataSet" name="reportDSet" id="8">
@@ -228,7 +244,7 @@
                     </structure>
                 </list-property>
             </structure>
-            <property name="dataSource">PRICING</property>
+            <property name="dataSource">prod_db</property>
             <list-property name="resultSet">
                 <structure>
                     <property name="position">1</property>
