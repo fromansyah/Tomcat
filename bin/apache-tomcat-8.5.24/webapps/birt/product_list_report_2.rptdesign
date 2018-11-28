@@ -21,7 +21,8 @@
             <property name="odaURL">jdbc:mysql://localhost/pricing</property>
             <property name="odaUser">root</property>
         </oda-data-source>
-        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="prod_db" id="50">
+        <oda-data-source extensionID="org.eclipse.birt.report.data.oda.jdbc" name="prod_db" id="51">
+            <text-property name="displayName"></text-property>
             <list-property name="privateDriverProperties">
                 <ex-property>
                     <name>contentBidiFormatStr</name>
@@ -32,7 +33,7 @@
                     <value>ILYNN</value>
                 </ex-property>
             </list-property>
-            <property name="odaDriverClass">org.gjt.mm.mysql.Driver</property>
+            <property name="odaDriverClass">com.mysql.jdbc.Driver</property>
             <property name="odaURL">jdbc:mysql://pricing-app-mysqldbserver.mysql.database.azure.com:3306/pricing</property>
             <property name="odaUser">fromansyah@pricing-app-mysqldbserver</property>
             <encrypted-property name="odaPassword" encryptionID="base64">UGFzc3cwcmQ=</encrypted-property>
@@ -64,6 +65,38 @@
             </list-property>
             <structure name="cachedMetaData"/>
             <property name="dataSource">prod_db</property>
+            <list-property name="resultSet">
+                <structure>
+                    <property name="position">1</property>
+                    <property name="name">product_no</property>
+                    <property name="nativeName">product_no</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">2</property>
+                    <property name="name">product_name</property>
+                    <property name="nativeName">product_name</property>
+                    <property name="dataType">string</property>
+                </structure>
+                <structure>
+                    <property name="position">3</property>
+                    <property name="name">periode_year</property>
+                    <property name="nativeName">periode_year</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">4</property>
+                    <property name="name">periode_month</property>
+                    <property name="nativeName">periode_month</property>
+                    <property name="dataType">integer</property>
+                </structure>
+                <structure>
+                    <property name="position">5</property>
+                    <property name="name">catalogue_price</property>
+                    <property name="nativeName">catalogue_price</property>
+                    <property name="dataType">decimal</property>
+                </structure>
+            </list-property>
             <xml-property name="queryText"><![CDATA[select a.product_no, a.product_name, c.periode_year , c.periode_month, c.catalogue_price
 from product a left outer join (select product_no, max(concat(periode_year,periode_month)) as periode
                                 from product_price
